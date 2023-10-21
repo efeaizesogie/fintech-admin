@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="heading">
+    <p class="title">Recent Customer Transaction</p>
+
+    <div class="search-bar">
+      <input
+        type="search"
+        placeholder="Search transactions "
+        class="search"
+        [(ngModel)]="searchInput"
+        (input)="updateSearch()"
+      />
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead class="table-head">
+        <tr>
+          <td class="table-head-item">S/N</td>
+          <td class="table-head-item name">Name</td>
+          <td class="table-head-item">Description</td>
+          <td class="table-head-item">Type</td>
+          <td class="table-head-item">Amount</td>
+          <td class="table-head-item">Status</td>
+          <td class="table-head-item">Timestamp</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of getCurrentPageData(); let i = index">
+          <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.transactionType }}</td>
+          <td>{{ row.transactionMethod }}</td>
+          <td [ngStyle]="getTypeStyle(row.status)">{{ row.amount }}</td>
+          <td class="status" [ngStyle]="getRowStyle(row.status)">
+            {{ row.status }}
+          </td>
+          <td>{{ row.timestamp }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-nav">
+    <div class="page">
+      <button
+        (click)="previousPage()"
+        [disabled]="currentPage === 1"
+        class="arrow-btn"
+      >
+        <img src="./../../assets/svg/Arrow - Left 2.svg" alt="" class="arrow" />
+      </button>
+      Page {{ currentPage }} of {{ getTotalPages() }}
+      <button
+        (click)="nextPage()"
+        [disabled]="currentPage === getTotalPages()"
+        class="arrow-btn"
+      >
+        <img
+          src="./../../assets/svg/Arrow - Right 2.svg"
+          alt=""
+          class="arrow"
+        />
+      </button>
+    </div>
+  </div>
+</div>

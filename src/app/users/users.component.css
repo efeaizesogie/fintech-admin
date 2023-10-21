@@ -1,0 +1,6 @@
+@import url(./../dashboard/dashboard.component.css);
+@import url(./../recent-transaction/recent-transaction.component.css);
+
+.bottom-items {
+  margin-top: 12px;
+}

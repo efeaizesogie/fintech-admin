@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 80px;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.nav-link-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  gap: 8px;
+}

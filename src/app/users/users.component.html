@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="left">
+    <app-nav></app-nav>
+  </div>
+  <div class="right">
+    <app-top-bar></app-top-bar>
+
+    <div class="bottom-items">
+      <div class="table-wrapper">
+        <table class="table">
+          <thead class="table-head">
+            <tr>
+              <td class="table-head-item">S/N</td>
+              <td class="table-head-item name">Firstname</td>
+              <td class="table-head-item">Lastname</td>
+              <td class="table-head-item">Username</td>
+              <td class="table-head-item">Email</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of getCurrentPageData(); let i = index">
+              <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td>
+              <td>{{ row.name }}</td>
+              <td>{{ row.lastName }}</td>
+              <td>{{ row.username }}</td>
+              <td>{{ row.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="page-nav">
+        <div class="page">
+          <button
+            (click)="previousPage()"
+            [disabled]="currentPage === 1"
+            class="arrow-btn"
+          >
+            <img
+              src="./../../assets/svg/Arrow - Left 2.svg"
+              alt=""
+              class="arrow"
+            />
+          </button>
+          Page {{ currentPage }} of {{ getTotalPages() }}
+          <button
+            (click)="nextPage()"
+            [disabled]="currentPage === getTotalPages()"
+            class="arrow-btn"
+          >
+            <img
+              src="./../../assets/svg/Arrow - Right 2.svg"
+              alt=""
+              class="arrow"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

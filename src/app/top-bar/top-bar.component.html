@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>
+    {{ isDashboardRoute() ? "Dashboard" : isUsersRoute() ? "Users" : "" }}
+  </h2>
+
+  <div class="profile">
+    <p class="welcome-text">Hi Efe,</p>
+    <div class="profile-icon">
+      <img
+        src="./../../assets/png/efe.jpg"
+        alt="Profile picture"
+        class="profile-pic"
+      />
+    </div>
+  </div>
+
+  <div class="menu-icon">
+    <img
+      src="./../../assets/svg/icons8-menu.svg"
+      alt="Nav menu"
+      class="nav-menu"
+      (click)="showNavMenu()"
+    />
+  </div>
+
+  <div class="menu-items" *ngIf="showMenu">
+    <img
+      src="./../../assets/svg/icons8-close.svg"
+      alt="Close"
+      class="close-img"
+      (click)="closeNavMenu()"
+    />
+    <div class="nav-items">
+      <a class="nav-link-item" routerLink="/" (click)="closeNavMenu()">
+        <img
+          src="./../../assets/svg/menu.svg"
+          alt="Menu Icon"
+          class="item-icon"
+        />
+        Dashboard
+      </a>
+      <a class="nav-link-item" routerLink="/users" (click)="closeNavMenu()">
+        <img
+          src="./../../assets/svg/user-03.svg"
+          alt="Menu Icon"
+          class="item-icon"
+        />
+        Users
+      </a>
+    </div>
+  </div>
+</div>
